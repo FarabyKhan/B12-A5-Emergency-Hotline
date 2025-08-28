@@ -11,13 +11,6 @@
           return elementIdValueNum;
       }
 
-    function getInnerText(name){
-        const element = document.getElementsByClassName(name)[0];
-        const elementValue = element.innerText;
-        const elementValueNumber = parseInt(elementValue);
-        return elementValueNumber;
-    }
-
     function setInnerText(value) {
         const availableCoinElement = document.getElementById("available-coin");
         availableCoinElement.innerText = value
@@ -25,26 +18,26 @@
 
         // Call buttons and History work
    getElement("card-box").addEventListener("click", function (e) {
-  if (e.target.className.includes("call-btn")) {
+  if (e.target.className.includes("call-btn")) {                                  
       
         const cardBtn = e.target
         const card =  cardBtn.parentElement.parentElement
         const cardTitle = card.querySelector(".card-title").innerText
         const subTitle = card.querySelector(".sub-title").innerText
-        const phoneNumber = getInnerText("phone-number")
+        const phoneNumber = parseInt(card.querySelector(".phone-number").innerText);
         
       
        
         const currentCoin = getInnerTextInId("available-coin")
          if(currentCoin<subtract){
-          alert("You don't have any coins, you need at least 20 coins to make a call")
+          alert("❌ You don't have any coins, you need at least 20 coins to make a call")
           return;
         }
 
         const newCurrentCoin = Number(currentCoin) - Number(subtract)  
         setInnerText(newCurrentCoin)
 
-              alert(`Calling ${subTitle} ${phoneNumber}.....`)
+              alert(`📞 Calling ${subTitle} ${phoneNumber}.....`)
               
                const now = new Date();
     const currentTime = now.toLocaleTimeString([], { 
@@ -80,8 +73,38 @@
     let currentHeartCount = getInnerTextInId("heart-count")  
 
     heartCountElement.innerText = currentHeartCount +1;
-       
-
+      
   }
 
   })
+
+getElement("card-box").addEventListener("click", async function (e) {
+  const btn = e.target.closest(".copy-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".card");
+  if (!card) return;
+
+  // get phone number text from the card
+  const phoneNumber = card.querySelector(".phone-number")?.innerText;
+  if (!phoneNumber) return;
+
+  try {
+    // copy to clipboard
+    await navigator.clipboard.writeText(phoneNumber);
+    alert(`Copied: ${phoneNumber}`);
+
+    // update copy counter
+    const copyCount = getElement("copy-count");
+    const copyCountElement = copyCount.querySelector("span");
+    const currentCount = parseInt(copyCountElement.innerText);
+    copyCountElement.innerText = currentCount + 1;
+
+         }
+         catch (err) {
+    console.error(err);
+    alert("Failed to copy.");
+  }
+
+            
+  }) 
