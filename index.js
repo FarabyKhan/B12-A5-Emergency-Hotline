@@ -74,10 +74,12 @@
           // Heart Icon Work
   
    getElement("card-box").addEventListener("click", function (e) {
-  if (e.target.className.includes("heart-btn")) {
+  if (e.target.classList.contains("heart-btn")) {
           
-    const heartCount = getElement("heart-count") 
-        
+    const heartCountElement = getElement("heart-count") 
+    let currentHeartCount = getInnerTextInId("heart-count")  
+
+    heartCountElement.innerText = currentHeartCount +1;
        
 
   }
