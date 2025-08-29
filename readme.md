@@ -113,12 +113,38 @@ You have to create a `Readme.md` file. and write down following questions. Dont 
 1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
   Ans: The difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**
    are: 
-     1.getElementById : It is used for select/retrieve an HTML element in the web page by the elements id name.
-     2.getElementsByClassName : It is used for select/retrieve HTML elements in the web page by the elements class name but it .
+     1.getElementById : It is used for select/retrieve an HTML element in the web page by the elements id name. But one id can't be use more then 1 time by this method.
+
+     2.getElementsByClassName : It is used for select/retrieve HTML elements in the web page by the elements class name and multiple element named by the same class name can be use by this method.
+
+     3.querySelector: It is use for select/retrieve the specific element like id, class, tag etc by using the 
+     CSS selectors. It select the first item that are targeted.
+
+     4.querySelectorAll: It more like querySelector but it target the all element named by it.
+
 2. How do you **create and insert a new element into the DOM**?
+
+  Ans: To create and insert a new element into the DOM we have to use the document.createElement() method. The element would be anything but we have to pass the tag name we want to create as a string. Then we can add contents, class whatever you want to this new element before inserting it into the DOM.
+
+  Ex: const newElement = document.createElement('h1')
+
+  newElement.textContent = 'This is my header.';
+
 3. What is **Event Bubbling** and how does it work?
+
+  Ans: It is a process of DOM that when a element is triggered by event and this element traverse it's parent element and then it's parent's parent like grand parent and go on until it reached the root element. Then it traverse back to it's original position.
+
 4. What is **Event Delegation** in JavaScript? Why is it useful?
+
+  Ans: It is a technique for handling event where a single even listener is attached to a parent element to manage event triggered by it's child element.
+
 5. What is the difference between **preventDefault() and stopPropagation()** methods?
+
+    Ans: The difference between preventDefault() and stopPropagation() methods are:
+
+      1.preventDefault(): It is a method of DOM that prevents the web browser default action in a certain event.
+
+      2.stopPropagation() : It is a method of the Event interface that prevents further propagation of the current event in the capturing and bubbling phases. 
 
 ---
 
