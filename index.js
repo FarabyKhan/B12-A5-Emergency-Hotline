@@ -18,10 +18,10 @@
 
         // Call buttons and History work
    getElement("card-box").addEventListener("click", function (e) {
-  if (e.target.className.includes("call-btn")) {                                  
+    const cardBtn = e.target.closest(".call-btn");                                 
       
-        const cardBtn = e.target
-        const card =  cardBtn.parentElement.parentElement
+        
+        const card =  cardBtn.closest(".card")
         const cardTitle = card.querySelector(".card-title").innerText
         const subTitle = card.querySelector(".sub-title").innerText
         const phoneNumber = parseInt(card.querySelector(".phone-number").innerText);
@@ -57,8 +57,7 @@
         `;
         historyContainer.appendChild(newHistory)
 
-  }
-    });
+  });
           getElement("clear-btn").addEventListener("click",function () {
             const historyContainer = getElement("history-container");
             historyContainer.innerHTML = "";
@@ -77,34 +76,24 @@
   }
 
   })
-
+              // Copy Button Work
 getElement("card-box").addEventListener("click", async function (e) {
   const btn = e.target.closest(".copy-btn");
-  if (!btn) return;
 
   const card = btn.closest(".card");
-  if (!card) return;
-
-  // get phone number text from the card
-  const phoneNumber = card.querySelector(".phone-number")?.innerText;
-  if (!phoneNumber) return;
-
-  try {
-    // copy to clipboard
+  
+  const phoneNumber = card.querySelector(".phone-number").innerText;
+  
     await navigator.clipboard.writeText(phoneNumber);
-    alert(`Copied: ${phoneNumber}`);
+    alert(`The number is copied ${phoneNumber}`);
 
-    // update copy counter
     const copyCount = getElement("copy-count");
     const copyCountElement = copyCount.querySelector("span");
     const currentCount = parseInt(copyCountElement.innerText);
     copyCountElement.innerText = currentCount + 1;
-
-         }
-         catch (err) {
-    console.error(err);
-    alert("Failed to copy.");
-  }
-
-            
+    
   }) 
+
+  
+
+  
