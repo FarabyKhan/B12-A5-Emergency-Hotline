@@ -18,10 +18,19 @@
 
         // Call buttons and History work
    getElement("card-box").addEventListener("click", function (e) {
-    const cardBtn = e.target.closest(".call-btn");                                 
+    const cardBtn = e.target.closest(".call-btn"); 
+                                    
+      if (!cardBtn){
+          return; 
+      } 
       
         
         const card =  cardBtn.closest(".card")
+
+                  if (!card) {
+                    return;
+                  }
+
         const cardTitle = card.querySelector(".card-title").innerText
         const subTitle = card.querySelector(".sub-title").innerText
         const phoneNumber = parseInt(card.querySelector(".phone-number").innerText);
@@ -80,8 +89,16 @@
 getElement("card-box").addEventListener("click", async function (e) {
   const btn = e.target.closest(".copy-btn");
 
-  const card = btn.closest(".card");
-  
+          if (!btn) {
+            return;
+          }
+
+
+         const card = btn.closest(".card");
+
+            if (!card) {
+              return;
+            }
   const phoneNumber = card.querySelector(".phone-number").innerText;
   
     await navigator.clipboard.writeText(phoneNumber);
