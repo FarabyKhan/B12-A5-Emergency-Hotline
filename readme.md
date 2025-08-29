@@ -111,6 +111,10 @@ You have to create a `Readme.md` file. and write down following questions. Dont 
 ### 6. Answer the following questions clearly:
 
 1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
+  Ans: The difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**
+   are: 
+     1.getElementById : It is used for select/retrieve an HTML element in the web page by the elements id name.
+     2.getElementsByClassName : It is used for select/retrieve HTML elements in the web page by the elements class name but it .
 2. How do you **create and insert a new element into the DOM**?
 3. What is **Event Bubbling** and how does it work?
 4. What is **Event Delegation** in JavaScript? Why is it useful?
